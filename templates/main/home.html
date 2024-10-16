@@ -9,36 +9,41 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="" method="post">
-            <div class="mb-3">
+          <form action="{% url 'save_task' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-1">
                 <label for="task-name" class="col-form-label">Task:</label>
-                <input type="text" id="task-name" class="form-control">
+                <input type="text" id="task-name" name="task_name" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="task-note" class="col-form-label">Task Note:</label>
-                <textarea id="task-note" class="form-control"></textarea>
+                <textarea id="task-note" name="task_note" class="form-control"></textarea>
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="due-date" class="col-form-label">Due Date:</label>
-                <input type="date" id="due-date" class="form-control">
+                <input type="date" id="due-date" name="due_date" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="due-time" class="col-form-label">Due Time:</label>
-                <input type="time" id="due-time" class="form-control">
+                <input type="time" id="due-time" name="due_time" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
+              <label for="tags" class="col-form-label">Tags:</label>
+              <input type="text" id="tags" name="tags" class="form-control" placeholder="Enter the comma separated tags">
+          </div>
+            <div class="mb-1">
                 <label for="priority" class="col-form-label">Priority:</label>
-                <select id="priority" class="form-control">
+                <select id="priority" name="priority" class="form-control">
                     <option value="1">Low</option>
                     <option value="2">Medium</option>
                     <option value="3">High</option>
                 </select>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
         </div>
       </div>
     </div>
