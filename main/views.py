@@ -6,7 +6,10 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'main/home.html')
+    # Get the tasks
+    tasks = Task.objects.filter(user=request.user)
+    context = {'tasks':tasks}
+    return render(request, 'main/home.html', context)
 
 @login_required
 def save_task(request):
