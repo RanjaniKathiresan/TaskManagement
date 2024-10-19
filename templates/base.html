@@ -27,7 +27,7 @@
                       <a href="{% url "home" %}" class="nav-link active" aria-current="page">View Task</a>      
                       <a href="#" class="nav-link">Logout</a>
                     {% else %}
-                      <a href="#" class="nav-link">Login</a>
+                      <a href="{% url "login" %}" class="nav-link">Login</a>
                       <a href="{% url "register" %}" class="nav-link">Register</a>
                     {% endif %}
                 </div>            
