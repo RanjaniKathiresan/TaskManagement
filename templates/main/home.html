@@ -52,14 +52,14 @@
 </div>
 
 <div class="container">
-  <h2 class="mb-4">Your Tasks</h2>
+  <h2 class="mb-4 mt-4">Your Tasks</h2>
   <button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add New Task</button>
 
   <div class="list-group">
     {% for task in tasks %}
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-3">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{task.title}}</h5>
+        <h5 class="mb-3">{{task.title}}</h5>
         <small class="text-muted">{{task.created_at|date:"M d, Y H:i"}}</small>
       </div>
 

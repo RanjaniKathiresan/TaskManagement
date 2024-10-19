@@ -9,6 +9,6 @@ def register_user(request):
             user = form.save()
             login(request, user)
             return redirect('home')
-        else:
-            form = CustomUserCreationForm()
-    return render(request, 'account/register.html', {'form':form})
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'account/register.html', {'form': form})

@@ -2,9 +2,24 @@
 {% block content %} 
 <div class="container mt-5">
     <h2>Register User</h2>
-    <form method="post" action="{% url "home" %}">
+    <form method="post" action="{% url "register" %}">
         {% csrf_token %}
-
+        
+        {% if form.errors %}
+            <div class="alert alert-danger">
+            <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+               <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            </div>
+        {% endif %}
+    
         <div class="mb-3">
             <label for="username" class="form-label">username</label>
             <input type="text" class="form-control" id='username', name='username', placeholder="Enter your username">
@@ -24,5 +39,5 @@
         <button type='submit' class="btn btn-primary">Register</button>
 
     </form>
-</div>
+    
 {% endblock content %}
