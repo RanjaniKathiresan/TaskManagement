@@ -7,14 +7,15 @@
         {% csrf_token %}
 
         {% if messages %}
-        <div class="alert-container">
+            <div  iv class="alert-container">
             {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
                     {{ message }}
                 </div>
             {% endfor %}
-        </div>
+            </div>
         {% endif %}
+
 
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
