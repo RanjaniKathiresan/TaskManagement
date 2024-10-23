@@ -43,7 +43,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Add</button>
           </div>
         </form>
       </div>
@@ -53,6 +53,15 @@
 
 <div class="container">
   <h2 class="mb-4 mt-4">Your Tasks</h2>
+  {% if messages %}
+            <div  iv class="alert-container">
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
   <button class="btn btn-success mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add New Task</button>
 
   <div class="list-group">
@@ -64,7 +73,14 @@
       </div>
 
       <p class="mb-1">{{task.description}}</p>
-      <small class="badge bg-{{task.priority|priority_color}}">{{task.get_priority_display}}</small>
+      <div class="d-flex w-100 justify-content-between align-content-center">
+        <small class="badge rounded-pill text-bg-{{task.priority|priority_color}}">{{task.get_priority_display}}</small>
+        <div>
+          <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal">Update</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+      
     </a>
     {% empty %}
     <p class="text-muted">No Task found</p>
